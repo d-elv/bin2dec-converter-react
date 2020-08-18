@@ -1,6 +1,6 @@
 My attempt on the below exercise devised by https://github.com/florinpop17 . I'm currently practicing using React (while still learning everything, really) and this was a great way to to better understand how to use the state and get elements inside a component speaking to each other as you want them to in order to get the results you want from the DOM.
 
-Sandbox link for fiddling [here] (https://codesandbox.io/s/binary2decimalconverter-mjvyk)
+Sandbox link for fiddling [here](https://codesandbox.io/s/binary2decimalconverter-mjvyk)
 
 # Bin2Dec
 
