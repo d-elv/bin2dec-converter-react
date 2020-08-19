@@ -7,33 +7,30 @@ class Bin2Dec extends Component {
     };
 
     handleInputChange = (e) => {
-        let binary = e.target.value;
-        this.inputValidator(binary);
+        const binary = e.target.value;
+        const isValid = this.inputValidator(binary);
         let decimal = parseInt(binary, 2);
-        if (isNaN(decimal)) {
+
+        if (isValid === false || binary === "") {
             decimal = 0;
         }
-
         this.setState({ decimal });
     };
 
     inputValidator = (binary) => {
-        let { valid } = this.state.valid;
-        let re = /^[0-1]*$/;
+        // Checks the input field for illegal characters. Updates state.valid to true or false accordingly.
+        let isValid;
+        const re = /^[0-1]*$/;
         binary.toString();
 
-        if (binary === "") {
-            binary = "0";
-        }
         if (re.test(binary) !== true) {
-            valid = false;
-            return this.setState({ valid });
+            this.setState({ valid: false });
+            isValid = false;
         } else {
-            valid = true;
-            return this.setState({ valid });
+            this.setState({ valid: true });
+            isValid = true;
         }
-
-        // TODO: CREATE A NICE FLOATY RED BOX WARNING USER OF INCORRECT INPUT
+        return isValid;
     };
 
     render() {
@@ -53,7 +50,7 @@ class Bin2Dec extends Component {
                     }
                 >
                     <p className="error-hover">Please only use 0's and 1's</p>
-                    <div className="error-hover-arrow"></div>
+                    <div className="error-hover-arrow" />
                 </div>
                 <input
                     onChange={this.handleInputChange}
