@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 
 class Bin2Dec extends Component {
     state = {
@@ -19,7 +19,7 @@ class Bin2Dec extends Component {
 
     inputValidator = (binary) => {
         let { valid } = this.state.valid;
-        let re = /([0-1*]$)/;
+        let re = /^[0-1]*$/;
         binary.toString();
 
         if (binary === "") {
@@ -27,7 +27,6 @@ class Bin2Dec extends Component {
         }
         if (re.test(binary) !== true) {
             valid = false;
-            console.log("shit's fucked!");
             return this.setState({ valid });
         } else {
             valid = true;
@@ -45,6 +44,17 @@ class Bin2Dec extends Component {
                     The binary number must only contain 0's and 1's and be a
                     maximum of 8 characters long with no spaces.
                 </p>
+                {/* <div className="error-container"> */}
+                <div
+                    className={
+                        this.state.valid
+                            ? "error-container-on"
+                            : "error-container-off"
+                    }
+                >
+                    <p className="error-hover">Please only use 0's and 1's</p>
+                    <div className="error-hover-arrow"></div>
+                </div>
                 <input
                     onChange={this.handleInputChange}
                     className={
